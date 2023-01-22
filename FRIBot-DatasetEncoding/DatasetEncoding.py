@@ -11,7 +11,7 @@ encoder.encode_feature_set('D:/FRI/IngProj/fri-bot/FRI-Bot/FRIBot-DatasetEncodin
 
 # Vectorization - Turning any sentence into one-hot encoded vector
 
-# vectorizer = Vectorizer('./encoded/otazky_encoded_dictionary.dat')
+# vectorizer = Vectorizer('./encoded/otazky_encoded_dictionary.dat') 
 # while True:
 #     input_sentence = input()
 #     if (input_sentence == 'e'):
