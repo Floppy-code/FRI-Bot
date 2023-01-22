@@ -189,7 +189,8 @@ class EncoderLSTM(Encoder):
                 num_encoder_tokens,
                 num_decoder_tokens,
                 max_encoder_seq_length,
-                max_decoder_seq_length)
+                max_decoder_seq_length,
+                input_text)
         self.save_to_file(var_file, vars)
         print('...DONE')
 
