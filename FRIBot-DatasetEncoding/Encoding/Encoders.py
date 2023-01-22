@@ -127,11 +127,12 @@ class EncoderLSTM(Encoder):
         for questions, answer in zip(question_list, answers):
             target_text = '\t' + answer + '\n' #start and stop characters only in target texts!
             for question in questions:
-                input_texts.append(question)
-                target_texts.append(target_text)
-                for char in question:
-                    if char not in input_characters:
-                        input_characters.add(char)
+                if (question != ''):
+                    input_texts.append(question)
+                    target_texts.append(target_text)
+                    for char in question:
+                        if char not in input_characters:
+                            input_characters.add(char)
             for char in target_text:
                 if char not in target_characters:
                     target_characters.add(char)
@@ -190,7 +191,7 @@ class EncoderLSTM(Encoder):
                 num_decoder_tokens,
                 max_encoder_seq_length,
                 max_decoder_seq_length,
-                question_list)
+                input_texts)
         self.save_to_file(var_file, vars)
         print('...DONE')
 
