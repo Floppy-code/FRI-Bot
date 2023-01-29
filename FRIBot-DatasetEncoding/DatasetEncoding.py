@@ -7,8 +7,8 @@ from Vectorization.Vectorizer import Vectorizer
 # encoder.encode_feature_set('./data/komplet2.csv', './encoded/komplet2_encoded')
 
 encoder = EncoderLSTM()
-encoder.encode_feature_set('./data/final_dataset.csv', './encoded/komplet_dataset')
-#encoder.encode_feature_set('D:/FRI/IngProj/fri-bot2/FRI-Bot/FRIBot-DatasetEncoding/data/final_dataset.csv', 'D:/FRI/IngProj/fri-bot2/FRI-Bot/FRIBot-DatasetEncoding/encoded/komplet_dataset')
+encoder.encode_feature_set('./data/final_dataset.csv', './encoded/final_dataset')
+#encoder.encode_feature_set('D:/FRI/IngProj/fri-bot2/FRI-Bot/FRIBot-DatasetEncoding/data/final_dataset.csv', 'D:/FRI/IngProj/fri-bot2/FRI-Bot/FRIBot-DatasetEncoding/encoded/final_dataset')
 
 # Vectorization - Turning any sentence into one-hot encoded vector
 
