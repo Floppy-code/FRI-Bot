@@ -6,7 +6,7 @@ class LexicalEditor():
         self.punctuation = [('á', 'a'), ('ä', 'a'), ('č', 'c'), ('ď', 'd'), ('é','e'), ('í', 'i'), ('ĺ', 'l'), ('ľ', 'l'), \
                     ('ň', 'n'), ('ó', 'o'), ('ô', 'o'), ('ŕ', 'r'), ('š', 's'), ('ť', 't'), ('ú', 'u'), ('ý', 'y'), ('ž', 'z')]
         self.accepted_types = ["ADJ", "ADV", "NOUN", "NUM", "VERB"]
-        #self.natural_language_processor = stanza.Pipeline(lang='sk', processors='tokenize,mwt,pos,lemma')
+        self.natural_language_processor = stanza.Pipeline(lang='sk', processors='tokenize,mwt,pos,lemma')
 
 
     #Removes all punctuation for word
@@ -34,4 +34,4 @@ class LexicalEditor():
                 if (self.is_accepted_part_of_speech(word.upos)):
                     output_sentence.append(self.erase_punctuation(word.lemma))
 
-        return output_sentence
+        return " ".join(output_sentence)

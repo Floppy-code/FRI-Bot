@@ -107,6 +107,7 @@ class EncoderLSTM(Encoder):
     def __init__(self):
         super().__init__()
         self.dataset = None
+        self.lex_editor = LexicalEditor()
 
     def encode_feature_set(self, input_file, output_file):
         input_texts = []
@@ -128,6 +129,7 @@ class EncoderLSTM(Encoder):
             target_text = '\t' + answer + '\n' #start and stop characters only in target texts!
             for question in questions:
                 if (question != ''):
+                    question = self.lex_editor.process_sentence(question) #Added part where we remove punctuation from all input senteces
                     input_texts.append(question)
                     target_texts.append(target_text)
                     for char in question:
