@@ -1,3 +1,5 @@
+from BLEU_metrics import BLEUMetrics
+
 import numpy as np
 import tensorflow as tf
 import pickle
@@ -10,6 +12,8 @@ class BLEUService():
         self.target_dict = self.load_dictionary(dictionary_paths)[1]
         self.reverse_dict = self.load_dictionary(dictionary_paths)[2]
         self.max_sequence_len = max_sequence_lenght
+
+        self.bleu_metrics = BLEUMetrics(self.reverse_dict, self.max_sequence_len)
 
         self.input_texts = self.load_dictionary(vars_path)[6]
         self.target_texts = self.load_dictionary(vars_path)[7]
@@ -24,9 +28,17 @@ class BLEUService():
         #Build data for BLEU_metrics
         y_true = []
         y_predict = []
-        for input, output in zip(self.input_texts, self.target_texts):
-            y_true.append(output)
+        
+        print("[INFO] Building predictions")
+        counter = 0
+        for input, output in zip(self.input_texts[0:2], self.target_texts[0:2]):
+            print(f'\rProgress: {round((counter / len(self.input_texts)) * 100)}%', end = '')
+            y_true.append(output.replace('\t', '').replace('\n', ''))
             y_predict.append(self.inference(input))
+        print('Progress: 100%...DONE')
+
+        print('[INFO] Calculating BLEU score for dataset')
+        self.bleu_metrics.BLEU_metrics_LSTM(y_true, y_predict)
 
     def inference(self, sentence):
         #Encoding sentence to vector
@@ -51,7 +63,7 @@ class BLEUService():
         stop_condition = False
         decoded_sentence = ""
         while not stop_condition:
-            output_tokens, h, c = self.decoder_model.predict([target_seq] + states_value)
+            output_tokens, h, c = self.decoder_model.predict([target_seq] + states_value, verbose = 0)
 
             # Sample a token
             sampled_token_index = np.argmax(output_tokens[0, -1, :])
