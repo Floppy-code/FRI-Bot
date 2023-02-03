@@ -1,21 +1,17 @@
 <div class="center">
-    <div 
-        class="chat"
-        (style)="[displayChat ? 'display: none;' : 'display:none;']"
-        >
-            <div class="contact bar">
-                <div class="pic fri"> </div>
-                <div style="display: flex;">
-                    <div class="name">
-                        Fri UNIZA
-                    </div>
-                    <div class="control-buttons">
-                        <i (click)="displayChat=false"
-                        >
-                            <fa-icon [icon]="faMinimize"></fa-icon>
-                        </i>
-                    </div>
+    <div class="chat" [ngStyle]="{'display' : displayChat ? 'flex' : 'none'}">
+        <div class="contact bar">
+            <div class="pic fri"> </div>
+            <div style="display: flex;">
+                <div class="name">
+                    Fri UNIZA
                 </div>
+                <div class="control-buttons">
+                    <i (click)="displayChat=false">
+                        <fa-icon [icon]="faMinimize"></fa-icon>
+                    </i>
+                </div>
+            </div>
         </div>
 
         <div class="messages" id="chat">
@@ -35,23 +31,18 @@
                 <div class="typing typing-3"></div>
             </div>
 
-        </div> 
-        <div style="height: 85px"> 
+        </div>
+        <div style="height: 85px">
             <div class="input">
-              <form [formGroup]="reactiveForm">
-                <input  
-                    #messageText
-                    type="text"                      
-                    placeholder="Tu napíš svoju správu!" 
-                    (keyup.enter)="addStudentMessage(messageText.value)"
-                    style="width: 75%;"
-                    formControlName="message"
-                />
-                <i (click)="addStudentMessage(messageText.value)">
-                    <fa-icon [icon]="faArrowRight"></fa-icon>
-                </i>
-              </form>
+                <form [formGroup]="reactiveForm">
+                    <input #messageText type="text" placeholder="Tu napíš svoju správu!"
+                        (keyup.enter)="addStudentMessage(messageText.value)" style="width: 75%;"
+                        formControlName="message" />
+                    <i (click)="addStudentMessage(messageText.value)">
+                        <fa-icon [icon]="faArrowRight"></fa-icon>
+                    </i>
+                </form>
             </div>
         </div>
     </div>
-</div> 
+</div>

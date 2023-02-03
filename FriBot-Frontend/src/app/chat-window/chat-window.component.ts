@@ -33,14 +33,16 @@ export class ChatWindowComponent {
   }
 
   addStudentMessage(text : string) {
-    this.messages.push(new Message("student", text, new Date().toTimeString()))
-    this.reactiveForm.reset()
-    this.writing = true
-    this.restApi.getAnswer(text).subscribe(data => {
-      console.log(data)
-      this.messages.push(new Message("fri", data.prediction + "", new Date().toTimeString()))
-      this.writing = false
-    })
+    if (text !== '') {
+      this.messages.push(new Message("student", text, new Date().toTimeString()))
+      this.reactiveForm.reset()
+      this.writing = true
+      this.restApi.getAnswer(text).subscribe(data => {
+        console.log(data)
+        this.messages.push(new Message("fri", data.prediction + "", new Date().toTimeString()))
+        this.writing = false
+      })
+    }
   }
 }
 

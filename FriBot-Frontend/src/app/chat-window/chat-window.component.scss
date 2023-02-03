@@ -132,6 +132,7 @@ body, html {
 		}
 		
 		.message {
+			overflow-wrap: break-word;
 			box-sizing: border-box;
 			padding: 0.5rem 1rem;
 			margin: 1rem;

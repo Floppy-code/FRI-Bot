@@ -14,6 +14,15 @@ class EncoderClassifier(Encoder):
         self.lex_editor = LexicalEditor()
         self.dataset = None
 
+    def reverse_sentence(sentence):
+        return sentence [::-1]
+
+    def reverse_words(sentence):
+        words = sentence.split(' ')
+        return ' '.join(reversed(words))
+
+    def reverse_letters_in_words(self, sentence):
+        return self.reverse_sentence(self.reverse_words(sentence))
 
     def encode_feature_set(self, input_file, output_file):
         #Loading dataset questions and appending IDs
