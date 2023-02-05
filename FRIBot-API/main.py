@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from Services.LSTMPredictionService import LSTMPredictionService
 
 #Prediction variables
-LSTMNetworkService = LSTMPredictionService('./network_dataset_optimized.h5', './final_dataset_backend_dictionaries', 127, 512)
+LSTMNetworkService = LSTMPredictionService('./network_short_answ_100.h5', './komplet_dataset_short_answ_backend_dictionaries', 127, 512)
 
 #FastAPI variables
 class Sentence(BaseModel):
