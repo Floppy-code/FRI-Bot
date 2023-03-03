@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <div class="messages" id="chat">
+        <div class="messages" id="chat" #scroll>
             <div class="time">
                 Dnes o {{startTime}}
             </div>
@@ -22,6 +22,9 @@
             <div *ngFor="let message of messages">
                 <div class="message {{message.author}}" mat-button matTooltip="Info about the action">
                     {{ message.text }}
+                    <a *ngIf="true" href="{{ message.link }}" target="_blank">
+                        {{ message.link }}
+                    </a>
                 </div>
             </div>
 
@@ -30,7 +33,7 @@
                 <div class="typing typing-2"></div>
                 <div class="typing typing-3"></div>
             </div>
-
+            {{scrollDown()}}
         </div>
         <div style="height: 85px">
             <div class="input">

@@ -22,7 +22,6 @@ export class RestApiService {
 
   // HttpClient API post() method => Create employee
   getAnswer(sentence: string): Observable<Sentence> {
-    console.log(JSON.stringify(sentence))
     const body = { sentence: sentence };
      return this.http
       .post<Sentence>(
